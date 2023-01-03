@@ -4,6 +4,7 @@ import { sign } from "jsonwebtoken";
 
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { User } from "../../entities/User";
+import { AppError } from "../../../../errors/AppError";
 
 interface IRequestDTO {
   email: string;
@@ -26,13 +27,13 @@ export class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new Error("Email or password incorrect!");
+      throw new AppError("Email or password incorrect!");
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error("Email or password incorrect!");
+      throw new AppError("Email or password incorrect!");
     }
 
     const token = sign({}, "d652eeeea9a382e2b37ad73e0a66b131", {
