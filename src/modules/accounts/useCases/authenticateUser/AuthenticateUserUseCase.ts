@@ -2,9 +2,9 @@ import { inject, injectable } from "tsyringe";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { User } from "../../entities/User";
-import { AppError } from "../../../../errors/AppError";
+import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { User } from "@modules/accounts/entities/User";
+import { AppError } from "@errors/AppError";
 
 interface IRequestDTO {
   email: string;
