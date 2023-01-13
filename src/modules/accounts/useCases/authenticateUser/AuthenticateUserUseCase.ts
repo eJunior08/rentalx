@@ -3,8 +3,8 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
-import { User } from "@modules/accounts/entities/User";
-import { AppError } from "@errors/AppError";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
+import { AppError } from "@shared/errors/AppError";
 
 interface IRequestDTO {
   email: string;
